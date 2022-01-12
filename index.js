@@ -6,9 +6,25 @@ for(let monster of monsters){
     findMonsters(monster)
 }
 
+// search monsters 
+document.querySelector('#search-monster').addEventListener('keyup', (event) => {
+    const searchKeyword = event.target.value.toLowerCase()
+
+    const monsters = document.querySelectorAll('.monster')
+
+    for(let monster of monsters){
+        const name = monster.children[1].innerText.toLowerCase()
+        const email = monster.children[2].innerText.toLowerCase()
+
+        if(name.includes(searchKeyword) || email.includes(searchKeyword)){
+            monster.style.display = 'block'
+        }else{
+            
+        }
+    }
+})
 
 
-findMonsters()
 function findMonsters(monsterData){
     const monsterDiv = document.createElement('div')
     monsterDiv.className = 'monster'
@@ -43,5 +59,8 @@ function notFound(){
     h1.innerText = '🧟‍♂️ No Monster Found 🧟‍♂️'
 
     notFound.append(span, h1)
+    // notFound.style.display = 'none'
+
+    document.querySelector('.monsters').append(notFound)
 }
 
